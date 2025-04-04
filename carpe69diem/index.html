@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Фото</title>
+    <style>
+        #gallery img {
+            width: 200px;
+            margin: 5px;
+        }
+    </style>
+    <script>
+        var photosCount = 4;
+        var currentPhotoIndex = 1;
+        function showNextPhoto() {
+            var elem = document.getElementById("currentPhoto");
+            if (!elem) return;
+            currentPhotoIndex++;
+            if (currentPhotoIndex > photosCount) currentPhotoIndex = 1;
+            elem.src = "images/photo" + currentPhotoIndex + ".jpg";
+        }
+        function addNextPhoto() {
+            var containerElem = document.getElementById("gallery");
+            if (!containerElem) return;
+            var newImage = document.createElement("img");
+            currentPhotoIndex++;
+            if (currentPhotoIndex > photosCount) currentPhotoIndex = 1;
+            newImage.src = "images/photo" + currentPhotoIndex + ".jpg";
+            newImage.alt = "Додане фото " + currentPhotoIndex;
+            containerElem.appendChild(newImage);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <img id="currentPhoto" src="images/photo1.jpg" alt="Поточне фото" />
+    </div>
+    <div id="gallery"></div>
+    <button onclick="showNextPhoto()">Наступне</button>
+    <button onclick="addNextPhoto()">Додати фото</button>
+</body>
+</html>
